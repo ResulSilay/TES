@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Paytone+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <script src="~/Scripts/material.min.js"></script>
+    <link href="~/Scripts/material.min.css" rel="stylesheet" />
+    <link href="~/Content/Site_Admin.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <div class="container">
+            <div class="menu">
+                <div class="logo">
+                    <a href="~/Home">
+                        t e s
+                    </a>
+                </div>
+                <div class="d1">
+                    Sistem Yönetim Paneli
+                </div>
+                <div class="d2">
+                    <a href="~/Admin/Tender" title="Home">Panel</a>
+                    <a href="~/Admin/Tender" title="Home">İhaleler</a>
+                    <a href="~/Admin/References" title="Home">Başvurular</a>
+                    <a href="~/Admin/Approved" title="Home">Onaylananlar</a>
+                    <a href="~/Admin/Account" title="Home">Hesaplar</a>
+                    <a href="~/Admin/Index" title="Home">Profil</a>
+                    <a href="~/Admin/Tender" title="Home">Çıkış</a>
+                </div>
+            </div>
+            <div>
+                <div class="mdl-card mdl-shadow--4dp" style="width:100%">
+                    <div class="content">
+                        <div>
+
+                        </div>
+                        <div>
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

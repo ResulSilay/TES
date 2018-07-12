@@ -1,0 +1,80 @@
+﻿@model TES.Models.Approved
+
+@{
+    ViewBag.Title = "ApprovedDel";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<div>
+    <h5>Kayıt silinsin mi?</h5>
+    <hr />
+    <div class="content_form">
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.TenderId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenderId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AccountId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AccountId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FileId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FileId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Datetime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Datetime)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Type)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Type)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EEADBModelStoreContainer" CdmEntityContainer="EEADBEntities">
+    <EntitySetMapping Name="Action">
+      <EntityTypeMapping TypeName="EEADBModel.Action">
+        <MappingFragment StoreEntitySet="Action">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Action_Map">
+      <EntityTypeMapping TypeName="EEADBModel.Action_Map">
+        <MappingFragment StoreEntitySet="Action_Map">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="A_ID" ColumnName="A_ID" />
+          <ScalarProperty Name="O_ID" ColumnName="O_ID" />
+          <ScalarProperty Name="Map_Uri" ColumnName="Map_Uri" />
+          <ScalarProperty Name="Map_Image" ColumnName="Map_Image" />
+          <ScalarProperty Name="M_Scale" ColumnName="M_Scale" />
+          <ScalarProperty Name="M_Distance" ColumnName="M_Distance" />
+          <ScalarProperty Name="M_Real_Distance" ColumnName="M_Real_Distance" />
+          <ScalarProperty Name="M_Area_Scale" ColumnName="M_Area_Scale" />
+          <ScalarProperty Name="M_Area_Distance" ColumnName="M_Area_Distance" />
+          <ScalarProperty Name="M_Area_Real_Distance" ColumnName="M_Area_Real_Distance" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Action_Operation">
+      <EntityTypeMapping TypeName="EEADBModel.Action_Operation">
+        <MappingFragment StoreEntitySet="Action_Operation">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="A_ID" ColumnName="A_ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ammunition">
+      <EntityTypeMapping TypeName="EEADBModel.Ammunition">
+        <MappingFragment StoreEntitySet="Ammunition">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Component">
+      <EntityTypeMapping TypeName="EEADBModel.Component">
+        <MappingFragment StoreEntitySet="Component">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="E_ID" ColumnName="E_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Reaction" ColumnName="Reaction" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Explosive">
+      <EntityTypeMapping TypeName="EEADBModel.Explosive">
+        <MappingFragment StoreEntitySet="Explosive">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lab_Result">
+      <EntityTypeMapping TypeName="EEADBModel.Lab_Result">
+        <MappingFragment StoreEntitySet="Lab_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="E_ID" ColumnName="E_ID" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Crater" ColumnName="Crater" />
+          <ScalarProperty Name="Pressure" ColumnName="Pressure" />
+          <ScalarProperty Name="P_Duration" ColumnName="P_Duration" />
+          <ScalarProperty Name="Reaction" ColumnName="Reaction" />
+          <ScalarProperty Name="Effect" ColumnName="Effect" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lab_Test">
+      <EntityTypeMapping TypeName="EEADBModel.Lab_Test">
+        <MappingFragment StoreEntitySet="Lab_Test">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="E_ID" ColumnName="E_ID" />
+          <ScalarProperty Name="L_ID" ColumnName="L_ID" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Pressure" ColumnName="Pressure" />
+          <ScalarProperty Name="Reaction" ColumnName="Reaction" />
+          <ScalarProperty Name="Effect" ColumnName="Effect" />
+          <ScalarProperty Name="Crater" ColumnName="Crater" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

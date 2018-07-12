@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EEADBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Action">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="Datetime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Action_Map">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="A_ID" Type="int" />
+    <Property Name="O_ID" Type="int" />
+    <Property Name="Map_Uri" Type="nvarchar" MaxLength="50" />
+    <Property Name="Map_Image" Type="image" />
+    <Property Name="M_Scale" Type="real" />
+    <Property Name="M_Distance" Type="real" />
+    <Property Name="M_Real_Distance" Type="real" />
+    <Property Name="M_Area_Scale" Type="real" />
+    <Property Name="M_Area_Distance" Type="real" />
+    <Property Name="M_Area_Real_Distance" Type="real" />
+    <Property Name="Datetime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Action_Operation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="A_ID" Type="int" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="Datetime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Ammunition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="Datetime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Component">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="E_ID" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="Rate" Type="real" />
+    <Property Name="Quantity" Type="float" />
+    <Property Name="Weight" Type="float" />
+    <Property Name="Reaction" Type="float" />
+    <Property Name="Datetime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Explosive">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="Datetime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Lab_Result">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="E_ID" Type="int" />
+    <Property Name="Weight" Type="real" />
+    <Property Name="Crater" Type="real" />
+    <Property Name="Pressure" Type="real" />
+    <Property Name="P_Duration" Type="real" />
+    <Property Name="Reaction" Type="real" />
+    <Property Name="Effect" Type="real" />
+    <Property Name="Datetime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Lab_Test">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="E_ID" Type="int" />
+    <Property Name="L_ID" Type="int" />
+    <Property Name="Weight" Type="float" />
+    <Property Name="Pressure" Type="float" />
+    <Property Name="Reaction" Type="float" />
+    <Property Name="Effect" Type="float" />
+    <Property Name="Crater" Type="float" />
+    <Property Name="Datetime" Type="datetime" />
+  </EntityType>
+  <EntityContainer Name="EEADBModelStoreContainer">
+    <EntitySet Name="Action" EntityType="Self.Action" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Action_Map" EntityType="Self.Action_Map" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Action_Operation" EntityType="Self.Action_Operation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ammunition" EntityType="Self.Ammunition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Component" EntityType="Self.Component" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Explosive" EntityType="Self.Explosive" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lab_Result" EntityType="Self.Lab_Result" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lab_Test" EntityType="Self.Lab_Test" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,79 @@
+﻿@model TES.Models.References
+
+@{
+    ViewBag.Title = "ReferUpdate";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h5>References</h5>
+        <hr />
+
+        <div class="column">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.TenderId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TenderId)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Note)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Note)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Money)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Money)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Datetime)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Datetime)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+
+    <div class="column">
+            @using (Html.BeginForm("ReferUpdate", "User", FormMethod.Post, null))
+            {
+                <div>
+                    <div class="title">
+                        <div id="m1"><br />Başvuru Yap</div>
+                        <div id="m2">bilgileri doldurup başvuru yapabilirsiniz.</div>
+                    </div>
+
+                    <br />
+
+                    @Html.Label("Note : ")<br />
+                    @Html.TextBox("note", @Html.DisplayFor(model => model.Note)
+)<br />
+
+                    @Html.Label("Teklif : ")<br />
+                    @Html.TextBox("money", @Html.DisplayFor(model => model.Money))<br />
+
+                    <br />
+                    <br />
+                    <div class="buttons">
+                        <button name="login" type="submit" onclick="location.href='@Url.Action("ReferUpdate")'">GÜNCELLE</button>
+                    </div>
+                </div>
+            }
+    </div>
+}

@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TESDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tel" Type="nvarchar" MaxLength="15" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" />
+    <Property Name="eMail" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Type" Type="int" />
+    <Property Name="Datetime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Approved">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenderId" Type="int" />
+    <Property Name="AccountId" Type="int" />
+    <Property Name="FileId" Type="int" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Datetime" Type="datetime" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Type" Type="int" />
+  </EntityType>
+  <EntityType Name="References">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenderId" Type="int" />
+    <Property Name="AccountId" Type="int" />
+    <Property Name="Note" Type="nvarchar(max)" />
+    <Property Name="Money" Type="real" />
+    <Property Name="Datetime" Type="datetime" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="Tender">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="Context" Type="nvarchar(max)" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="Money" Type="real" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Type" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESDB.dbo.Approved_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Approved_View">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="t_Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="TenderId" Type="int" />
+    <Property Name="AccountId" Type="int" />
+    <Property Name="FileId" Type="int" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Datetime" Type="datetime" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Type" Type="int" />
+    <Property Name="t_Id" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="t_Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="Context" Type="nvarchar(max)" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="Money" Type="real" />
+    <Property Name="t_Status" Type="int" />
+    <Property Name="t_Type" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESDB.dbo.References_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="References_View">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Expr1" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="TenderId" Type="int" />
+    <Property Name="AccountId" Type="int" />
+    <Property Name="Note" Type="nvarchar(max)" />
+    <Property Name="Money" Type="real" />
+    <Property Name="Datetime" Type="datetime" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Expr1" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="Context" Type="nvarchar(max)" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="Expr2" Type="real" />
+    <Property Name="Expr3" Type="int" />
+    <Property Name="Type" Type="int" />
+  </EntityType>
+  <Function Name="usp_Tender_Control" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="TESDBModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Approved" EntityType="Self.Approved" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="References" EntityType="Self.References" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tender" EntityType="Self.Tender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Approved_View" EntityType="Self.Approved_View" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Approved_View].[Id] AS [Id], 
+    [Approved_View].[TenderId] AS [TenderId], 
+    [Approved_View].[AccountId] AS [AccountId], 
+    [Approved_View].[FileId] AS [FileId], 
+    [Approved_View].[Description] AS [Description], 
+    [Approved_View].[Datetime] AS [Datetime], 
+    [Approved_View].[Status] AS [Status], 
+    [Approved_View].[Type] AS [Type], 
+    [Approved_View].[t_Id] AS [t_Id], 
+    [Approved_View].[Title] AS [Title], 
+    [Approved_View].[t_Description] AS [t_Description], 
+    [Approved_View].[Context] AS [Context], 
+    [Approved_View].[StartDate] AS [StartDate], 
+    [Approved_View].[EndDate] AS [EndDate], 
+    [Approved_View].[Money] AS [Money], 
+    [Approved_View].[t_Status] AS [t_Status], 
+    [Approved_View].[t_Type] AS [t_Type], 
+    [Approved_View].[Name] AS [Name]
+    FROM [dbo].[Approved_View] AS [Approved_View]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="References_View" EntityType="Self.References_View" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [References_View].[Id] AS [Id], 
+    [References_View].[TenderId] AS [TenderId], 
+    [References_View].[AccountId] AS [AccountId], 
+    [References_View].[Note] AS [Note], 
+    [References_View].[Money] AS [Money], 
+    [References_View].[Datetime] AS [Datetime], 
+    [References_View].[Status] AS [Status], 
+    [References_View].[Expr1] AS [Expr1], 
+    [References_View].[Title] AS [Title], 
+    [References_View].[Description] AS [Description], 
+    [References_View].[Context] AS [Context], 
+    [References_View].[StartDate] AS [StartDate], 
+    [References_View].[EndDate] AS [EndDate], 
+    [References_View].[Expr2] AS [Expr2], 
+    [References_View].[Expr3] AS [Expr3], 
+    [References_View].[Type] AS [Type]
+    FROM [dbo].[References_View] AS [References_View]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

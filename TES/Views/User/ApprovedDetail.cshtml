@@ -1,0 +1,103 @@
+﻿@model TES.Models.Approved_View
+
+@{
+    ViewBag.Title = "Approved";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+
+<div>
+
+    <h5>Sonuç Detaylar</h5>
+    <hr />
+    <dl class="content_form">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Datetime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Datetime)
+        </dd>
+    </dl>
+
+    <h5>İhale Detayları</h5>
+    <hr />
+    <dl class="content_form">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenderId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenderId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.t_Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.t_Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Context)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Context)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+    </dl>
+
+    <h5>Kazanan Detayları</h5>
+    <hr />
+    <dl class="content_form">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+    <br />
+</div>

@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TESDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="15" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="eMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Datetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Approved">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenderId" Type="int" />
+          <Property Name="AccountId" Type="int" />
+          <Property Name="FileId" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Datetime" Type="datetime" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Type" Type="int" />
+        </EntityType>
+        <EntityType Name="References">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenderId" Type="int" />
+          <Property Name="AccountId" Type="int" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="Money" Type="real" />
+          <Property Name="Datetime" Type="datetime" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Tender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="Context" Type="nvarchar(max)" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Money" Type="real" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Type" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TESDB.dbo.Approved_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Approved_View">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="t_Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TenderId" Type="int" />
+          <Property Name="AccountId" Type="int" />
+          <Property Name="FileId" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Datetime" Type="datetime" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Type" Type="int" />
+          <Property Name="t_Id" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="t_Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="Context" Type="nvarchar(max)" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Money" Type="real" />
+          <Property Name="t_Status" Type="int" />
+          <Property Name="t_Type" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TESDB.dbo.References_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="References_View">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Expr1" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TenderId" Type="int" />
+          <Property Name="AccountId" Type="int" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="Money" Type="real" />
+          <Property Name="Datetime" Type="datetime" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Expr1" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="Context" Type="nvarchar(max)" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Expr2" Type="real" />
+          <Property Name="Expr3" Type="int" />
+          <Property Name="Type" Type="int" />
+        </EntityType>
+        <Function Name="usp_Tender_Control" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="TESDBModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Approved" EntityType="Self.Approved" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="References" EntityType="Self.References" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tender" EntityType="Self.Tender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Approved_View" EntityType="Self.Approved_View" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Approved_View].[Id] AS [Id], 
+    [Approved_View].[TenderId] AS [TenderId], 
+    [Approved_View].[AccountId] AS [AccountId], 
+    [Approved_View].[FileId] AS [FileId], 
+    [Approved_View].[Description] AS [Description], 
+    [Approved_View].[Datetime] AS [Datetime], 
+    [Approved_View].[Status] AS [Status], 
+    [Approved_View].[Type] AS [Type], 
+    [Approved_View].[t_Id] AS [t_Id], 
+    [Approved_View].[Title] AS [Title], 
+    [Approved_View].[t_Description] AS [t_Description], 
+    [Approved_View].[Context] AS [Context], 
+    [Approved_View].[StartDate] AS [StartDate], 
+    [Approved_View].[EndDate] AS [EndDate], 
+    [Approved_View].[Money] AS [Money], 
+    [Approved_View].[t_Status] AS [t_Status], 
+    [Approved_View].[t_Type] AS [t_Type], 
+    [Approved_View].[Name] AS [Name]
+    FROM [dbo].[Approved_View] AS [Approved_View]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="References_View" EntityType="Self.References_View" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [References_View].[Id] AS [Id], 
+    [References_View].[TenderId] AS [TenderId], 
+    [References_View].[AccountId] AS [AccountId], 
+    [References_View].[Note] AS [Note], 
+    [References_View].[Money] AS [Money], 
+    [References_View].[Datetime] AS [Datetime], 
+    [References_View].[Status] AS [Status], 
+    [References_View].[Expr1] AS [Expr1], 
+    [References_View].[Title] AS [Title], 
+    [References_View].[Description] AS [Description], 
+    [References_View].[Context] AS [Context], 
+    [References_View].[StartDate] AS [StartDate], 
+    [References_View].[EndDate] AS [EndDate], 
+    [References_View].[Expr2] AS [Expr2], 
+    [References_View].[Expr3] AS [Expr3], 
+    [References_View].[Type] AS [Type]
+    FROM [dbo].[References_View] AS [References_View]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TESDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Context" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Money" Type="Single" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="TESDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tender" EntityType="Self.Tender" />
+          <EntitySet Name="Account" EntityType="TESDBModel.Account" />
+          <EntitySet Name="References" EntityType="TESDBModel.References" />
+          <EntitySet Name="Approved" EntityType="TESDBModel.Approved" />
+          <EntitySet Name="Approved_View" EntityType="TESDBModel.Approved_View" />
+          <EntitySet Name="References_View" EntityType="TESDBModel.References_View" />
+          <FunctionImport Name="usp_Tender_Control" />
+        </EntityContainer>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Datetime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="References">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenderId" Type="Int32" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Money" Type="Single" />
+          <Property Name="Datetime" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Approved">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenderId" Type="Int32" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="FileId" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Datetime" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Type" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Approved_View">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="t_Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TenderId" Type="Int32" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="FileId" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Datetime" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="t_Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="t_Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Context" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Money" Type="Single" />
+          <Property Name="t_Status" Type="Int32" />
+          <Property Name="t_Type" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="References_View">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Expr1" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TenderId" Type="Int32" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Money" Type="Single" />
+          <Property Name="Datetime" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Expr1" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Context" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Expr2" Type="Single" />
+          <Property Name="Expr3" Type="Int32" />
+          <Property Name="Type" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TESDBModelStoreContainer" CdmEntityContainer="TESDBEntities">
+          <EntitySetMapping Name="Tender">
+            <EntityTypeMapping TypeName="TESDBModel.Tender">
+              <MappingFragment StoreEntitySet="Tender">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Money" ColumnName="Money" />
+                <ScalarProperty Name="Context" ColumnName="Context" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="TESDBModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="eMail" ColumnName="eMail" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="References">
+            <EntityTypeMapping TypeName="TESDBModel.References">
+              <MappingFragment StoreEntitySet="References">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="Money" ColumnName="Money" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="TenderId" ColumnName="TenderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Approved">
+            <EntityTypeMapping TypeName="TESDBModel.Approved">
+              <MappingFragment StoreEntitySet="Approved">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="TenderId" ColumnName="TenderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Approved_View">
+            <EntityTypeMapping TypeName="TESDBModel.Approved_View">
+              <MappingFragment StoreEntitySet="Approved_View">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="t_Type" ColumnName="t_Type" />
+                <ScalarProperty Name="t_Status" ColumnName="t_Status" />
+                <ScalarProperty Name="Money" ColumnName="Money" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Context" ColumnName="Context" />
+                <ScalarProperty Name="t_Description" ColumnName="t_Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="t_Id" ColumnName="t_Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="TenderId" ColumnName="TenderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="References_View">
+            <EntityTypeMapping TypeName="TESDBModel.References_View">
+              <MappingFragment StoreEntitySet="References_View">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Expr3" ColumnName="Expr3" />
+                <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Context" ColumnName="Context" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="Money" ColumnName="Money" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="TenderId" ColumnName="TenderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_Tender_Control" FunctionName="TESDBModel.Store.usp_Tender_Control" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

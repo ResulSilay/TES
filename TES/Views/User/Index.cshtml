@@ -1,0 +1,58 @@
+﻿@model IEnumerable<TES.Models.Tender>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+
+<h5>İhaleler</h5>
+<hr />
+
+@using (Html.BeginForm("Index", "User", FormMethod.Get, null))
+{
+    <div class="tab">
+        @Html.ActionLink("Alım", "Index", new { type = 1 })
+        @Html.ActionLink("Satış", "Index", new { type = 2 })
+    </div>
+}
+
+<table class="mdl-data-table" style="width:100%">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)<br />
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td class="select">
+                @Html.ActionLink("Başvur", "Refer", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

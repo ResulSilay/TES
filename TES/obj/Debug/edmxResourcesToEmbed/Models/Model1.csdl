@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EEADBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Action">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Datetime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Action_Map">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="A_ID" Type="Int32" />
+    <Property Name="O_ID" Type="Int32" />
+    <Property Name="Map_Uri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Map_Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="M_Scale" Type="Single" />
+    <Property Name="M_Distance" Type="Single" />
+    <Property Name="M_Real_Distance" Type="Single" />
+    <Property Name="M_Area_Scale" Type="Single" />
+    <Property Name="M_Area_Distance" Type="Single" />
+    <Property Name="M_Area_Real_Distance" Type="Single" />
+    <Property Name="Datetime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Action_Operation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="A_ID" Type="Int32" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Datetime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Ammunition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Datetime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Component">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="E_ID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Rate" Type="Single" />
+    <Property Name="Quantity" Type="Double" />
+    <Property Name="Weight" Type="Double" />
+    <Property Name="Reaction" Type="Double" />
+    <Property Name="Datetime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Explosive">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Datetime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Lab_Result">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="E_ID" Type="Int32" />
+    <Property Name="Weight" Type="Single" />
+    <Property Name="Crater" Type="Single" />
+    <Property Name="Pressure" Type="Single" />
+    <Property Name="P_Duration" Type="Single" />
+    <Property Name="Reaction" Type="Single" />
+    <Property Name="Effect" Type="Single" />
+    <Property Name="Datetime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Lab_Test">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="E_ID" Type="Int32" />
+    <Property Name="L_ID" Type="Int32" />
+    <Property Name="Weight" Type="Double" />
+    <Property Name="Pressure" Type="Double" />
+    <Property Name="Reaction" Type="Double" />
+    <Property Name="Effect" Type="Double" />
+    <Property Name="Crater" Type="Double" />
+    <Property Name="Datetime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="EEADBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Action" EntityType="Self.Action" />
+    <EntitySet Name="Action_Map" EntityType="Self.Action_Map" />
+    <EntitySet Name="Action_Operation" EntityType="Self.Action_Operation" />
+    <EntitySet Name="Ammunition" EntityType="Self.Ammunition" />
+    <EntitySet Name="Component" EntityType="Self.Component" />
+    <EntitySet Name="Explosive" EntityType="Self.Explosive" />
+    <EntitySet Name="Lab_Result" EntityType="Self.Lab_Result" />
+    <EntitySet Name="Lab_Test" EntityType="Self.Lab_Test" />
+  </EntityContainer>
+</Schema>

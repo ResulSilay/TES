@@ -1,0 +1,60 @@
+﻿@model IEnumerable<TES.Models.Approved_View>
+
+@{
+    ViewBag.Title = "Approved";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<div style="height:50px">
+    <div class="tab_left">
+        <h5>Onaylamalar</h5>
+    </div>
+    <div class="tab_right">
+        @using (Html.BeginForm("Tender", "Admin", FormMethod.Get, null))
+        {
+            <div class="tab" style="display:none">
+                @Html.ActionLink("Yeni", "ApprovedInsert")
+            </div>
+        }
+    </div>
+</div>
+<hr />
+<table class="mdl-data-table" style="width:100%">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenderId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Datetime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenderId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Datetime)
+        </td>
+        <td class="select">
+            @Html.ActionLink("Düzenle", "ApprovedEdit", new { id = item.Id })
+            @Html.ActionLink("İptal", "ApprovedDel", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

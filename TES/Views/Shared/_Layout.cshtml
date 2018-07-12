@@ -1,0 +1,117 @@
+﻿@*@model TES.Models.Model_Register*@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Paytone+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:700|Exo:700|Hind+Vadodara|PT+Sans+Caption|Raleway:700|Ubuntu:700" rel="stylesheet">
+
+    <script src="~/Scripts/material.min.js"></script>
+    <link href="~/Scripts/material.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+    <script>
+        function showRegister() {
+            document.getElementById("Login").style.display = 'none';
+            document.getElementById("Register").style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+        <div class="container">
+            <div class="right">
+                <div class="fix">
+                    <div class="top">
+                        <div id="t1">
+                            <a href="~/Home/Index" title="Home">Ana Sayfa</a>
+                            <a href="~/Home/Tender" title="Home">İhaleler</a>
+                            <a href="~/Home/Contact" title="Home">İletişim</a>
+                        </div>
+                    </div>
+
+                    <div class="content">
+
+                        @using (Html.BeginForm("Login", "Home", FormMethod.Post, null))
+                        {
+                            <div id="Login">
+                                <div class="title">
+                                    <div id="m1">Giriş Yap</div>
+                                    <div id="m2">veya kayıt olabilirsiniz.</div>
+                                </div>
+
+                                @Html.TextBox("txt_Login_Email", "e-Posta adresiniz.")
+                                @Html.Password("txt_Login_Pass", "şifre giriniz.")
+
+                                <div class="message">
+                                    @Html.Raw("This page is protected by reCAPTCHA, and subject to the Google Privacy Policy and Terms of service.")
+                                </div>
+                                <br />
+                                <br />
+                                <div class="buttons">
+                                    <button name="login" type="submit" onclick="location.href='@Url.Action("Login")'">GİRİŞ</button>
+                                    <button name="register" type="button" onclick="showRegister()">KAYIT OL</button>
+                                </div>
+                            </div>
+                        }
+                            @using (Html.BeginForm("Register", "Home", FormMethod.Post, null))
+                            {
+                                <div id="Register" style="display:none">
+                                    <div class="title">
+                                        <div id="m1">Kayıt Ol</div>
+                                        <div id="m2">hemen kayıt olun.</div>
+                                    </div>
+
+
+                                    @Html.TextBox("txtName", "Ad/Kurum/Kuruluş ismi.")
+                                    @Html.TextBox("txtTel", "Telefon numarası.")
+                                    @Html.TextBox("txtEmail", "e-Posta adresiniz.")
+                                    @Html.Password("txtPass", "şifre giriniz.")
+                                    }
+                                    <div class="message">
+                                        @Html.Raw("")
+                                    </div>
+                                    <div class="buttons">
+
+                                        <button name="register" type="submit" onclick="location.href='@Url.Action("Register")'">KAYIT OL</button>
+                                        <button name="register" type="submit" onclick="location.href='@Url.Action("Index")'">GERİ DÖN</button>
+
+                                    </div>
+
+                                </div>
+                            }
+                        </div>
+                </div>
+            </div>
+            <div class="left">
+                <div class="top">
+                    <div>
+                        <div class="column logo">
+                            <a href="~/Home">
+                                t e s
+                            </a>
+                        </div>
+                        <div class="column">
+                            İhale Değerlendirme Sistemi<br />
+                            Kastamonu il Özel İdaresi
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="content">
+                    @RenderBody()
+                </div>
+
+            </div>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+</body>
+</html>

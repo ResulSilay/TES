@@ -1,0 +1,89 @@
+﻿@model TES.Models.Tender
+
+
+@{
+    ViewBag.Title = "Refer";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="content">
+    <h5>Başvuru</h5>
+    <hr />
+
+    <div class="content_form">
+        <div class="column">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.StartDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.EndDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Type)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Type)
+                </dd>
+
+            </dl>
+        </div>
+        <div class="column">
+            @using (Html.BeginForm("Refer", "User", FormMethod.Post, null))
+            {
+                <div>
+                    <div class="title">
+                        <div id="m1"><br />Başvuru Yap</div>
+                        <div id="m2">bilgileri doldurup başvuru yapabilirsiniz.</div>
+                    </div>
+
+                    <br />
+
+                    @Html.Label("Note : ")<br />
+                    @Html.TextBox("note", "notunuz...")<br />
+
+                    @Html.Label("Teklif : ")<br />
+                    @Html.TextBox("money", "fiyat...")<br />
+
+                    <br />
+                    <br />
+                    <div class="buttons">
+                        <button name="login" type="submit" onclick="location.href='@Url.Action("Refer")'">BAŞVUR</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+}

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TES.Models.References_View>
+
+@{
+    ViewBag.Title = "References";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+
+<h5>References</h5>
+<hr />
+<table class="mdl-data-table" style="width:100%">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenderId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Money)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Datetime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenderId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Money)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Datetime)
+        </td>
+        <td class="select">
+            @Html.ActionLink("Düzenle", "ReferUpdate", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

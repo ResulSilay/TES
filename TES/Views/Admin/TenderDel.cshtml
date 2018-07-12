@@ -1,0 +1,88 @@
+﻿@model TES.Models.Tender
+
+@{
+    ViewBag.Title = "TenderDel";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+
+<div>
+    <h5>Kayıt silinsin mi?</h5>
+    <hr />
+    <div class="content_form">
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Context)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Context)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Money)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Money)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StartDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EndDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Type)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Type)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+            </div>
+        }
+    </div>
+</div>
